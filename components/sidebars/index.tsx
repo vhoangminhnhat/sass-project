@@ -1,7 +1,9 @@
 import { cn } from '@/lib/utils';
+"use client"
 import { useSidebarStore } from '@/stores/sidebar-store';
 import React from 'react'
 import Logo from '../logo';
+import SidebarsToggle from './sidebars-toggle';
 
 interface SidebarsProps {
     className?: string;
@@ -19,8 +21,9 @@ const Sidebars: React.FC<SidebarsProps> = ({className, isProPlan, userLimitCount
         <div className='h-20 pl-7 pr-6'>
             <div className='flex items-center justify-between w-full'>
                 {
-                    isMinimal && <Logo/>
+                    !isMinimal && <Logo/>
                 }
+                <SidebarsToggle/>
             </div>
         </div>
     </div>
