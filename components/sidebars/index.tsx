@@ -8,6 +8,9 @@ import { UserButton, useUser } from '@clerk/nextjs';
 import { MAX_FREE_COUNTS } from '@/constants';
 import { cn } from '@/lib/utils';
 import { Progress } from '../ui/progress';
+import Navbar from './Navbar';
+import SubcriptionButton from '../subcription-button';
+import ThemeToggle from './theme-toggle';
 
 interface SidebarsProps {
     className?: string;
