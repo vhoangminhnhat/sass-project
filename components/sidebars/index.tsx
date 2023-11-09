@@ -1,10 +1,13 @@
-import { cn } from '@/lib/utils';
+
 "use client"
 import { useSidebarStore } from '@/stores/sidebar-store';
 import React from 'react'
 import Logo from '../logo';
 import SidebarsToggle from './sidebars-toggle';
 import { UserButton, useUser } from '@clerk/nextjs';
+import { MAX_FREE_COUNTS } from '@/constants';
+import { cn } from '@/lib/utils';
+import { Progress } from '../ui/progress';
 
 interface SidebarsProps {
     className?: string;
@@ -51,15 +54,16 @@ const Sidebars: React.FC<SidebarsProps> = ({className, isProPlan, userLimitCount
                         {
                             !isProPlan && <div className='mb-4'>
                                 <div className='text-center mb-2 text-muted-foreground font-semibold'>
-                                    {
-                                        userLimitCount/{MAX_FREE_COUNTS}
-                                    }
+                                        {userLimitCount}/{MAX_FREE_COUNTS} Free generations
                                 </div>
+                                <Progress value={(userLimitCount/MAX_FREE_COUNTS) * 100} className='bg-gray-50 h-3' indicatorClassName='gradient-button'/>
                             </div>
                         }
+                        <SubcriptionButton isPro={isProPlan}/>
                     </div>
                 }
             </div>
+            <ThemeToggle/>
         </div>
     </div>
   )
